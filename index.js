@@ -15,18 +15,17 @@ function parse() {
         if (/^[\s\n-.]*\(/.test(tmp)) {
             tmp = tmp.replace(/^[\s\n-.]*/, "")
             film += " (" + tmp.substring(0, tmp.search(/\)/) + 1)
+            film = film.replaceAll("-\n", "").replaceAll("\n", " ")
             tmp = tmp.replace(/^[\s\w\d\nа-яА-Я-]*\)/, "")
         }
         let cinemas = tmp.split(/[.,]/)
         cinemas = cinemas.map((element) => massreplaceAll(element
             .replaceAll("-\n", '')
-            .replace(/^ /, '')
-            .replace(/ $/)
+            .replace(/^\s*/, '')
+            .replace(/\s*$/, '')
             .replaceAll('\n', ' '), "\n-."))
-        cinemas = cinemas.map(e => {
-            e.toLowerCase().split(" ").map(word => word[0].toUpperCase() + word.substring(1)).join(" ")
-        })
         cinemas = cinemas.filter(e => !/^\s*$/.test(e))
+        cinemas = cinemas.map(e => e.toLowerCase().split(" ").map(word => word[0].toUpperCase() + word.substring(1)).join(" "))
         arr.push({ "film": film, "cinemas": cinemas })
     }
 
@@ -129,7 +128,7 @@ function exportToCsv(dct) {
         for(const film of films) {
             let cinemas = Object.keys(dct[day][film])
             for(const cinema of cinemas) {
-                res += `${cinema};${day};${dct[day][film][cinema]};${film}\n`
+                res += `${cinema};${_changeDateFormat(day)};${dct[day][film][cinema]};${film}\n`
             }
             res += "\n"
         }
@@ -137,4 +136,9 @@ function exportToCsv(dct) {
     }
     console.log(res)
     document.getElementById("exp").innerText = res
+}
+
+function _changeDateFormat(date) {
+    let parts = date.split("-")
+    return parts[2] + "-" + parts[1] + "-" + parts[0]
 }
