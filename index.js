@@ -22,7 +22,10 @@ function parse() {
             .replaceAll("-\n", '')
             .replace(/^ /, '')
             .replace(/ $/)
-            .replaceAll('\n', ' '), "\n-."));
+            .replaceAll('\n', ' '), "\n-."))
+        cinemas = cinemas.map(e => {
+            e.toLowerCase().split(" ").map(word => word[0].toUpperCase() + word.substring(1)).join(" ")
+        })
         cinemas = cinemas.filter(e => !/^\s*$/.test(e))
         arr.push({ "film": film, "cinemas": cinemas })
     }
@@ -126,7 +129,7 @@ function exportToCsv(dct) {
         for(const film of films) {
             let cinemas = Object.keys(dct[day][film])
             for(const cinema of cinemas) {
-                res += `${cinema}\t${day}\t${dct[day][film][cinema]}\t${film}\n`
+                res += `${cinema};${day};${dct[day][film][cinema]};${film}\n`
             }
             res += "\n"
         }
