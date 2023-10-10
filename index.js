@@ -71,6 +71,11 @@ document.getElementById("bu").onclick = () => {
     parse()
 }
 
+document.getElementById("dashes_remove").onclick = () => {
+    let text = document.getElementById("to_parse").value.replaceAll("\t", " ")
+    document.getElementById("to_parse").value = text.replaceAll("-\n", "")
+}
+
 // document.getElementById("bu_test").onclick = () => {
 //     parseTest()
 // }

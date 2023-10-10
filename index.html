@@ -13,6 +13,8 @@
     <div></div>
     <div>Текст</div><textarea id="to_parse"></textarea>
     <div></div>
+    <button id="dashes_remove">Убрать переносы</button>
+    <div></div>
     <button id="bu">Добавить день</button>
     <!-- <span>Текст тест</span><textarea id="to_parse_test"></textarea>
     <div></div>
@@ -23,6 +25,15 @@
     <div>Импорт (JSON)</div><textarea id="import"></textarea>
     <div></div>
     <button id="import_button">Импорт</button>
+    <p style="white-space: pre-wrap;"><i>Для начала работы нужно экспортировать JSON
+        -- Как обрабатывать день --
+1. Выставить дату дня
+2. (по желанию) убрать переносы в тексте дня
+3. Нажать "Добавить день"
+
+При обновлении страницы все данные стираются, так что стоит время от времени экспортировать
+текущий прогресс (он появится на экране) и копировать его куда-нибудь к себе
+    </i></p>
     <script src="index.js"></script>
 </body>
 
