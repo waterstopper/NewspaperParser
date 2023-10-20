@@ -25,7 +25,10 @@ function parse() {
             .replace(/\s*$/, '')
             .replaceAll('\n', ' '), "\n-."))
         cinemas = cinemas.filter(e => !/^\s*$/.test(e))
-        cinemas = cinemas.map(e => e.toLowerCase().split(" ").map(word => word[0].toUpperCase() + word.substring(1)).join(" "))
+        console.log(cinemas)
+        cinemas = cinemas.map(e => e.toLowerCase()
+            .split(" ").filter(e => !/^\s*$/.test(e))
+            .map(word => word[0].toUpperCase() + word.substring(1)).join(" "))
         arr.push({ "film": film, "cinemas": cinemas })
     }
 
@@ -117,17 +120,17 @@ document.getElementById("to_csv").onclick = () => {
     }
     console.log(dct)
     exportToCsv(dct)
-    
+
 }
 
 function exportToCsv(dct) {
     let res = ""
     let dates = Object.keys(dct).sort()
-    for(const day of dates) {
+    for (const day of dates) {
         let films = Object.keys(dct[day])
-        for(const film of films) {
+        for (const film of films) {
             let cinemas = Object.keys(dct[day][film])
-            for(const cinema of cinemas) {
+            for (const cinema of cinemas) {
                 res += `${cinema};${_changeDateFormat(day)};${dct[day][film][cinema]};${film}\n`
             }
             res += "\n"
