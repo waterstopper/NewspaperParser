@@ -8,35 +8,35 @@
 </head>
 
 <body>
-    <h1>Парсер кино в газетах</h1>
-    <div>Дата</div><input type="date" id="date">
+    <h1>Newspaper parser</h1>
+    <div>Date</div><input type="date" id="date">
     <div></div>
-    <div>Текст</div><textarea id="to_parse"></textarea>
+    <div>Text</div><textarea id="to_parse"></textarea>
     <div></div>
-    <button id="dashes_remove">Убрать переносы</button>
+    <button id="dashes_remove">Remove breaks</button>
     <div></div>
-    <button id="bu">Добавить день</button>
+    <button id="bu">Add day</button>
     <!-- <span>Текст тест</span><textarea id="to_parse_test"></textarea>
     <div></div>
     <button id="bu_test">Parse test</button> -->
-    <button id="export">Экспорт (JSON)</button>
-    <button id="to_csv">В csv</button>
+    <button id="export">Export (JSON)</button>
+    <button id="to_csv">To csv</button>
     <p id="exp"></p>
-    <div>Импорт (JSON)</div><textarea id="import"></textarea>
+    <div>Import (JSON)</div><textarea id="import"></textarea>
     <div></div>
-    <button id="import_button">Импорт</button>
-    <p style="white-space: pre-wrap;"><i>Для начала работы нужно экспортировать JSON
-        -- Как обрабатывать день --
-1. Выставить дату дня
-2. (по желанию) убрать переносы в тексте дня
-3. <strong>Убедиться, что название фильма стоит в таких кавычках: «». Если это упустить, то все сломается</strong> 
-4. Нажать "Добавить день"
+    <button id="import_button">Import</button>
+    <p style="white-space: pre-wrap;"><i>To get started, you need to export JSON
+        -- How to process the day --
+1. Set the date of the day
+2. (optional) remove hyphenation in the text of the day
+3. <strong>Make sure that the title of the movie is in the following quotation marks: "". If you miss this, then everything will break</strong> 
+4. Click "Add a day"
 
-        -- Замечания --
-1. При обновлении страницы все данные стираются, так что стоит время от времени экспортировать
-текущий прогресс (он появится на экране) и копировать его куда-нибудь
-2. Названия фильмов и кинотеатров регистро-независимы (то есть "КолиЗеЙ" и "кОЛИЗей" - одно и то же). Нужно следить только, чтобы в названиях не было опечаток
-    </i></p>
+        -- Remarks --
+1. When updating the page, all data is erased, so it's worth exporting
+the current progress from time to time (it will appear on the screen) and copying it somewhere;
+2. The names of films and cinemas are register-independent (that is, "ColosSeum" and "ColosseuM" are the same thing).
+You only need to make sure that there are no typos in the names;</i></p>
     <script src="index.js"></script>
 </body>
 
